@@ -9,6 +9,5 @@
         elseif EM_MC_Selection == 4
             load Electric_Machine_Data\emrax228_Twin_contpower;
         elseif EM_MC_Selection == 5
-            load Electric_Machine_Data\Ideal_TomegaCurve;
-            
+            load Electric_Machine_Data\parker210-150Q6_PM150DZR_600V;   
         end
