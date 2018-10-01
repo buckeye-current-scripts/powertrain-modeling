@@ -6,7 +6,7 @@ maxAvgVelocity = 0;
 Best_Rear_Sprocket = 0;
 
 %Vector of teeth for rear sprocket
-for Rear_Sprocket = 21:75
+for Rear_Sprocket = 21:150
 
 %Set all gears equal to rear sprocket since it is single speed
 Rear_Sprocket_FirstGear = Rear_Sprocket;
@@ -16,12 +16,12 @@ Rear_Sprocket_SecondGear = Rear_Sprocket;
 sim('BuckeyeCurrent_Simulation_gearoptimization');
 
 %Check if Velocity was faster than fastest so far
-if mean(Vehicle_Velocity) > maxAvgVelocity
-    maxAvgVelocity = mean(Vehicle_Velocity);
+if mean(Veh_Velocity) > maxAvgVelocity
+    maxAvgVelocity = mean(Veh_Velocity);
     Best_Rear_Sprocket = Rear_Sprocket;
-    EnergyReq = Energy_req(end);
-    distance = Vehicle_Distance;
-    velocity = Vehicle_Velocity;
+    EnergyReq = Batt_Energy(end);
+    distance = Veh_Distance;
+    velocity = Veh_Velocity;
 end
 
 end
