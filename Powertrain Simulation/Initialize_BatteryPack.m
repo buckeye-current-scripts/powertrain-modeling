@@ -1,7 +1,7 @@
 %% Initialization file for selecting cell
 %% Cell data files
 if Cell_Selection == 1
-    load Cell_Data\Ideal_600V_100Ah;
+    load Cell_Data\Ideal_600V;
 elseif Cell_Selection == 2
     load Cell_Data\Efest_IMR18650_600V_49Ah;
 elseif Cell_Selection == 3
