@@ -34,7 +34,7 @@ legend('Simulated Velocity');
 %figure but different plots, if you google 'matlab subplot' that'd help
 f = figure('color',[1 1 1]);
 title('Pack Performance');
-subplot(311)
+ax(1) = subplot(311);
 h(1) = plot(Batt_Voltage);
 hold on;
 grid on;
@@ -49,7 +49,7 @@ legend('Pack Voltage','Pack Current','Pack Power','Location','northwest')
 ylabel('Power (kW)')
 xlabel('Time (s)')
 
-subplot(312)
+ax(2) = subplot(312);
 h(1) = plot(Batt_SOC);
 hold on;
 grid on;
@@ -62,12 +62,13 @@ set(h(2),'linewidth',2);
 legend('Pack SOC','Energy Useage','Location','northwest')
 xlabel('Time (s)')
 
-subplot(313)
+ax(3) = subplot(313);
 h(1) = plot(Batt_TerminalVoltage);
 set(h(1),'linewidth',2);
 ylabel('Terminal Voltage (V)');
 xlabel('Time (s)');
 legend('Terminal Voltage');
+linkaxes(ax,'x')
 
 %Motor torque, speed
 

@@ -3,14 +3,15 @@
 if Cell_Selection == 1
     load Cell_Data\Ideal_600V;
 elseif Cell_Selection == 2
-    load Cell_Data\Efest_IMR18650_600V_49Ah;
+    load Cell_Data\Efest_IMR18650_600V_42Ah_FirstOrder;
 elseif Cell_Selection == 3
-    load Cell_Data\LG_INR18650HG2_600V_42Ah;
+    load Cell_Data\LG_INR18650HG2_600V_42Ah_FirstOrder;
 elseif Cell_Selection == 4
-    load Cell_Data\LG_INR18650MJ1_600V_49Ah;
+    load Cell_Data\LG_INR18650MJ1_600V_49Ah_FirstOrder;
 elseif Cell_Selection == 5
-    load Cell_Data\SanPan_NCR18650GA_600V_49Ah;
+    load Cell_Data\SanPan_NCR18650GA_600V_49Ah_FirstOrder;
 end
 
-V_cell_init = interp1(Cell.SOC_dch,Cell.OCV_dch,SOC_max);
-P_lim_dch_init = interp1(Cell.SOC_dch,Cell.P_lim_dch,SOC_max);
+V_cell_init = interp1(CELL.SOC_dch,CELL.OCV_dch,SOC_max);
+P_lim_dch_init = interp1(CELL.SOC_dch,CELL.Power_dch,SOC_max);
+P_lim_ch_init = interp1(CELL.SOC_ch,CELL.Power_ch,SOC_max);
