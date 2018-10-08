@@ -12,6 +12,6 @@ elseif Cell_Selection == 5
     load Cell_Data\SanPan_NCR18650GA_600V_49Ah_FirstOrder;
 end
 
-V_cell_init = interp1(CELL.SOC_dch,CELL.OCV_dch,SOC_max);
-P_lim_dch_init = interp1(CELL.SOC_dch,CELL.Power_dch,SOC_max);
-P_lim_ch_init = interp1(CELL.SOC_ch,CELL.Power_ch,SOC_max);
+V_cell_init = interp1(CELL.SOC,CELL.OCV,SOC_max);
+P_lim_dch_init = interp1(CELL.SOC,CELL.Power_dch,SOC_max);
+P_lim_ch_init = interp1(CELL.SOC,CELL.Power_ch,SOC_max);
