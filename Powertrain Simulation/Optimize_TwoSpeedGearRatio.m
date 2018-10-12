@@ -9,10 +9,10 @@ maxAvgVelocity = 0;
 Best_Rear_Sprocket = 0;
 
 %Vector of teeth for rear sprocket
-for Rear_Sprocket_FirstGear_Optimize = 40:75
+for Rear_Sprocket_FirstGear_Optimize = 75:105
     
     %Vector of teeth for second gear
-    for Rear_Sprocket_SecondGear_Optimize = 21:70
+    for Rear_Sprocket_SecondGear_Optimize = 50:80
         %Run model
         sim('BuckeyeCurrent_Simulation');
 
@@ -20,7 +20,7 @@ for Rear_Sprocket_FirstGear_Optimize = 40:75
         if mean(Veh_Velocity) > maxAvgVelocity
             maxAvgVelocity = mean(Veh_Velocity);
             maxVelocity = max(Veh_Velocity);
-            time = tout(end);
+            time = Time(end);
             Best_FirstGear = Rear_Sprocket_FirstGear_Optimize;
             Best_SecondGear = Rear_Sprocket_SecondGear_Optimize;
             EnergyReq = Batt_Energy(end);

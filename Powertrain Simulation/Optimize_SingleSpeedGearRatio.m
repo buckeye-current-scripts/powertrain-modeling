@@ -7,7 +7,7 @@ maxAvgVelocity = 0;
 Best_Rear_Sprocket = 0;
 
 %Vector of teeth for rear sprocket
-for Rear_Sprocket = 21:75
+for Rear_Sprocket = 21:110
 
 %Set all gears equal to rear sprocket since it is single speed
 Rear_Sprocket_FirstGear_Optimize = Rear_Sprocket;
