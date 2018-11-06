@@ -76,6 +76,13 @@ linkaxes(ax,'x')
 
 figure('color', [1 1 1])
 title('IOM Current Profile - Unfiltered')
+yyaxis left
 plot(Batt_Current);
-ylabel('Batt Current [A]');
+hold on;
+ylabel('Current [A]')
+yyaxis right
+plot(Veh_Velocity);
+plot(Target_Velocity);
+ylabel('Speed [m/s]');
 xlabel('Time [s]');
+legend('Pack Current','Simulated Velocity','Target Velocity')
