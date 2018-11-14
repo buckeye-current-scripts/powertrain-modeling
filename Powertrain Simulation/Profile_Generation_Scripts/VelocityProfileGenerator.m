@@ -8,8 +8,9 @@ close all;
 %% Load Corner-Radius Profile Script
 [file, path] = uigetfile();
 filename = fullfile(path, file);
-CornerRadius = importdata(filename); %Assumes Corner-Radius is in array with distance in first column and radius in second
-
+Data = importdata(filename); 
+CornerRadius(:,1) = Data.distance;                                    %Must Make Corner-Radius is in array with distance in first column and radius in second
+CornerRadius(:,2) = Data.radius;
 %% Find Apexes of Track
 %Find troughs of corner radius profile to find smallest radii aka the apex
 InverseRadii = 1./CornerRadius(:,2);

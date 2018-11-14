@@ -81,8 +81,22 @@ plot(Batt_Current);
 hold on;
 ylabel('Current [A]')
 yyaxis right
-plot(Veh_Velocity);
-plot(Target_Velocity);
-ylabel('Speed [m/s]');
+plot(Throttle_Cmd);
+plot(Brake_Cmd);
+ylabel('%');
 xlabel('Time [s]');
-legend('Pack Current','Simulated Velocity','Target Velocity')
+legend('Pack Current','Throttle Command','Brake Command')
+
+
+figure('color', [1 1 1])
+title('IOM Current Profile - Unfiltered')
+yyaxis left
+plot(Batt_Current);
+hold on;
+ylabel('Current [A]')
+yyaxis right
+plot(Grade_Force);
+plot(RrWhl_Force);
+ylabel('Force [N]');
+xlabel('Time [s]');
+legend('Pack Current','Grade Force','Whl Force')
