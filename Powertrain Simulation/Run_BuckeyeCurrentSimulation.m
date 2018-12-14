@@ -5,17 +5,21 @@
 
 %*************************************************************************
 %Clear Variables and Screen and close graphs
-clear; clc; close;
+clear; clc; close all;
 
 %Turn optimization off for gearing
 optimize_gearing = 0; %Set to Zero so that whatever gears are specified in simulation are used
 Rear_Sprocket_FirstGear_Optimize = 1; %These need to be declared so they exist even though they aren't used
 Rear_Sprocket_SecondGear_Optimize = 1;
 
+% Add Initialization Folder to Path
+addpath('./Initialization')
+run Init_FLUIDS;
+
 %% Run Model
 sim('BuckeyeCurrent_Simulation');
 
-%% Process Results and Plotting --- Chris add your plots here
+%% Process Results and Plotting
 
 %Vehicle Speed vs Distance and Target Speed Versus Distance
 f1 = figure('color',[1 1 1]);
@@ -30,8 +34,7 @@ xlabel('Distance (m)');
 legend('Simulated Velocity');
 
 
-%Pack Voltage, Current, Power, Energy, SOC -- Maybe make these on the same
-%figure but different plots, if you google 'matlab subplot' that'd help
+%Pack Voltage, Current, Power, Energy, SOC
 f2 = figure('color',[1 1 1]);
 title('Pack Performance');
 ax(1) = subplot(311);
@@ -70,10 +73,6 @@ xlabel('Time (s)');
 legend('Terminal Voltage');
 linkaxes(ax,'x')
 
-%Motor torque, speed
-
-%Anything else you think would be interesting
-
 figure('color', [1 1 1])
 title('IOM Current Profile - Unfiltered')
 yyaxis left
@@ -100,3 +99,54 @@ plot(RrWhl_Force);
 ylabel('Force [N]');
 xlabel('Time [s]');
 legend('Pack Current','Grade Force','Whl Force')
+
+%% Process Thermal Model Results
+
+%Motor Performance
+figure('color', [1 1 1])
+subplot(311)
+title('Motor Thermal Performance')
+plot(tout,Motor_T_Housing_C,'linewidth',2)
+hold on;
+plot(tout,Motor_T_PM_C,'linewidth',2)
+plot(tout,Motor_T_Winding_C,'linewidth',2)
+legend('Housing Temperature','Permanant Magnet/Rotor Temp','Stator Winding Temp')
+ylabel('Temp [C]')
+xlabel('Time [s]')
+
+subplot(312)
+plot(tout,Motor_Heat_Rejection_W,'linewidth',2)
+ylabel('Heat Rejection [W]')
+xlabel('Time [s]')
+legend('Motor Losses')
+
+subplot(313)
+plot(tout,Motor_T_cool_in_C,'linewidth',2);
+hold on;
+plot(tout,Motor_T_cool_out_C,'linewidth',2);
+legend('Coolant Temp, in','Coolant Temp, out')
+ylabel('Temp [C]')
+xlabel('Time [s]')
+
+%Inverter Performance
+figure('color', [1 1 1])
+subplot(311)
+title('Inverter Thermal Performance')
+plot(tout,Inverter_SwitchingModuleTemp_C,'linewidth',2)
+legend('Module Temp')
+ylabel('Temp [C]')
+xlabel('Time [s]')
+
+subplot(312)
+plot(tout,Inverter_Heat_Rejection_W,'linewidth',2)
+ylabel('Heat Rejection [W]')
+xlabel('Time [s]')
+legend('Inverter Losses')
+
+subplot(313)
+plot(tout,Inverter_T_cool_in_C,'linewidth',2);
+hold on;
+plot(tout,Inverter_T_cool_out_C,'linewidth',2);
+legend('Coolant Temp, in','Coolant Temp, out')
+ylabel('Temp [C]')
+xlabel('Time [s]')

@@ -13,5 +13,4 @@
         elseif EM_MC_Selection == 6
             load Electric_Machine_Data\parker210-100P6_GenericController_600V;
             load Thermal_Models\parker210-100P6_ThermalModelParameters;
-            load Thermal_Models\RinehartPM150DZR_ThermalModelParameters;
         end
