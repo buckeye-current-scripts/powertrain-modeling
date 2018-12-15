@@ -2,7 +2,6 @@
 %Run Simulation and Process Results
 %Make sure Simulink model has parameters you want to be set: what
 %velocity proifle to use, elevation profile, motor you want to use, gearing, etc.
-
 %*************************************************************************
 %Clear Variables and Screen and close graphs
 clear; clc; close all;
