@@ -30,7 +30,10 @@ h(1) = plot(Veh_Distance,Veh_Velocity);
 set(h(1),'linewidth',2);
 ylabel('Velocity (m/s');
 xlabel('Distance (m)');
-legend('Simulated Velocity');
+hold on;
+h(2) = plot(Veh_Distance,Target_Velocity)
+set(h(2),'linewidth',2);
+legend('Simulated Velocity','Target Velocity');
 
 
 %Pack Voltage, Current, Power, Energy, SOC
@@ -147,5 +150,34 @@ plot(tout,Inverter_T_cool_in_C,'linewidth',2);
 hold on;
 plot(tout,Inverter_T_cool_out_C,'linewidth',2);
 legend('Coolant Temp, in','Coolant Temp, out')
+ylabel('Temp [C]')
+xlabel('Time [s]')
+
+%Radiator Performance
+figure('color', [1 1 1])
+subplot(311)
+title('Radiator Thermal Performance')
+plot(tout,Inverter_T_cool_out_C,'linewidth',2)
+hold on;
+plot(tout,Radiator_T_cool_out_C,'linewidth',2)
+legend('Coolant Temp, in','Coolant Temp, out')
+ylabel('Temp [C]')
+xlabel('Time [s]')
+
+subplot(312)
+plot(tout,Radiator_Heat_Rejection_W,'linewidth',2)
+ylabel('Heat Rejection [W]')
+hold on
+yyaxis right
+plot(tout,Veh_Velocity,'linewidth',2)
+ylabel('Radiator Face Velocity [m/s]')
+xlabel('Time [s]')
+legend('Radiator Heat Rejection','Face Velocity')
+
+subplot(313)
+plot(tout,Radiator_T_Wall_C,'linewidth',2);
+hold on;
+plot(tout,Radiator_T_Fins_C,'linewidth',2);
+legend('Wall Temp','Fin Temp')
 ylabel('Temp [C]')
 xlabel('Time [s]')
