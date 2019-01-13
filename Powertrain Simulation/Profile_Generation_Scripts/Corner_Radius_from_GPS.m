@@ -21,7 +21,7 @@ fun_in.href = 0; % reference height from the surface of the Earth to the flat Ea
 flat = lla2flat(fun_in.lla,fun_in.llo,fun_in.psio,fun_in.href);
 flat = [flat(:,2) flat(:,1) -flat(:,3)];
 
-%% Interpolate Flat Earth Data
+% %% Interpolate Flat Earth Data
 cumSum = cat(1,0,cumsum(sqrt(sum(diff(flat).^2,2))));
 flat_interp = interp1(cumSum,flat,linspace(0,cumSum(end),10000),'pchip');
 cumSum_interp = cat(1,0,cumsum(sqrt(sum(diff(flat_interp).^2,2))));
