@@ -205,13 +205,14 @@ lat_g = (velocity_profile.^2)./(CornerRadius(:,2));
 
 %% Plot Velocity Profile
 figure(1)
-plot(velocity_profile);
+plot(CornerRadius(:,1),velocity_profile,'linewidth',2);
 xlabel('Distance (m)');
 ylabel('Velocity (m/s)');
-
+title('IOM Velocity Profile')
+hold on;
 %% Plot lean angle at each point
 lean_angle = atan((lat_g./9.81)).*360./2./pi; %Calc lean angle in deg based on long acc
-figure(2)
+yyaxis right
 plot(CornerRadius(:,1),lean_angle);
 xlabel('Distance (m)');
 ylabel('Lean Angle (deg)');

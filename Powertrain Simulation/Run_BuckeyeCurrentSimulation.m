@@ -23,17 +23,17 @@ sim('BuckeyeCurrent_Simulation');
 %Vehicle Speed vs Distance and Target Speed Versus Distance
 f1 = figure('color',[1 1 1]);
 title('Velocity Comparison');
+h(2) = plot(Veh_Distance,Target_Velocity);
+set(h(2),'linewidth',2);
+hold on;
 h(1) = plot(Veh_Distance,Veh_Velocity);
 %Should also plot the entire velocity profile to see how far we made it,
 %need to figure out how to export this from simulink or load it
 %automatically here
 set(h(1),'linewidth',2);
-ylabel('Velocity (m/s');
-xlabel('Distance (m)');
-hold on;
-h(2) = plot(Veh_Distance,Target_Velocity)
-set(h(2),'linewidth',2);
-legend('Simulated Velocity','Target Velocity');
+ylabel('Velocity [m/s]');
+xlabel('Distance [m]');
+legend('Target Velocity','Simulated Velocity');
 
 
 %Pack Voltage, Current, Power, Energy, SOC
@@ -181,3 +181,34 @@ plot(tout,Radiator_T_Fins_C,'linewidth',2);
 legend('Wall Temp','Fin Temp')
 ylabel('Temp [C]')
 xlabel('Time [s]')
+
+%% Aerodynamic Plots
+figure()
+plot(Grade_Force,'linewidth',2)
+hold on;
+plot(Roll_Force,'linewidth',2)
+plot(Drag_Force,'linewidth',2)
+legend('Grade Force','Roll Force','Drag Force')
+ylabel('Force [N]')
+xlabel('Time [s]')
+
+figure()
+plot(Grade_Work,'linewidth',2)
+hold on;
+plot(Roll_Work,'linewidth',2)
+plot(Drag_Work,'linewidth',2)
+legend('Grade Force','Roll Force','Drag Force')
+ylabel('Work [Ns]')
+xlabel('Time [s]')
+
+f1 = figure('color',[1 1 1]);
+title('Ideal Velocity Profile');
+h(2) = plot(Veh_Distance,Target_Velocity);
+set(h(2),'linewidth',2);
+%Should also plot the entire velocity profile to see how far we made it,
+%need to figure out how to export this from simulink or load it
+%automatically here
+ylabel('Velocity [m/s]');
+xlabel('Distance [m]');
+hold on;
+plot(Veh_Distance,Veh_Velocity,'linewidth',2)
