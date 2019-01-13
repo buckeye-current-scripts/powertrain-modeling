@@ -31,10 +31,9 @@ set(h(1),'linewidth',2);
 ylabel('Velocity (m/s');
 xlabel('Distance (m)');
 hold on;
-h(2) = plot(Veh_Distance,Target_Velocity)
+h(2) = plot(Veh_Distance,Target_Velocity);
 set(h(2),'linewidth',2);
 legend('Simulated Velocity','Target Velocity');
-
 
 %Pack Voltage, Current, Power, Energy, SOC
 f2 = figure('color',[1 1 1]);
@@ -74,20 +73,6 @@ ylabel('Terminal Voltage (V)');
 xlabel('Time (s)');
 legend('Terminal Voltage');
 linkaxes(ax,'x')
-
-figure('color', [1 1 1])
-title('IOM Current Profile - Unfiltered')
-yyaxis left
-plot(Batt_Current);
-hold on;
-ylabel('Current [A]')
-yyaxis right
-plot(Throttle_Cmd);
-plot(Brake_Cmd);
-ylabel('%');
-xlabel('Time [s]');
-legend('Pack Current','Throttle Command','Brake Command')
-
 
 figure('color', [1 1 1])
 title('IOM Current Profile - Unfiltered')
