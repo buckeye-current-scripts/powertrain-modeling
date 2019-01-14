@@ -166,3 +166,12 @@ plot(tout,Radiator_T_Fins_C,'linewidth',2);
 legend('Wall Temp','Fin Temp')
 ylabel('Temp [C]')
 xlabel('Time [s]')
+
+%Reservoir
+figure()
+plot(tout,Radiator_T_cool_out_C,'linewidth',2)
+hold on;
+plot(tout,Reservoir_T_cool_out_C,'linewidth',2)
+legend('Coolant Temp, in','Coolant Temp, out')
+ylabel('Temp [C]')
+xlabel('Time [s]')

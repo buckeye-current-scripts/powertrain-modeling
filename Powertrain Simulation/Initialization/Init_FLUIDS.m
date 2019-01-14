@@ -6,7 +6,7 @@
 %% =================Coefficients for Coolant Properties====================
 
 % Mixture Composition
-COOLANT.x_g = 0;              % Fraction of glycol in coolant
+COOLANT.x_g = 0.1;              % Fraction of glycol in coolant
 % Density
 COOLANT.rho_w_a = 0.0013;       % Density constant 1
 COOLANT.rho_w_b = -2.164e-6;    % Density constant 2
