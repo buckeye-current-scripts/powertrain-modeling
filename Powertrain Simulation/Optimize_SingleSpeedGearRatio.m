@@ -12,7 +12,7 @@ maxAvgVelocity = 0;
 Best_Rear_Sprocket = 0;
 
 %Vector of teeth for rear sprocket
-for Rear_Sprocket = 70:95
+for Rear_Sprocket = 95:110
 
 
 

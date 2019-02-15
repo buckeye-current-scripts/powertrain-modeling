@@ -25,14 +25,14 @@ for n = 1:length(locs) %Change from inverse radius back to actual radius
     apex_radius(n,1) = CornerRadius(locs(n,1),2);
 end
 %% Load Race Data for Friction Ellipse
-Data = csvread('ZachJacobs_CBR600RR_FullRace_062914_MODIFIED.csv');
+RaceData = csvread('ZachJacobs_CBR600RR_FullRace_062914_MODIFIED.csv');
+RaceData = sortrows(RaceData,1);
 %% Create acceleration limits
 
 % Establish friction elipse acceleration limits - values chosen based on common racebike values found
-longlim = 9.81; %Acceleration and braking limit (m/s^2)
-latlim = 9.81*1.28; %Lateral acceleration at 52 deg lean angle (m/s^2) - 2017 spec was 55 deg true and 49.5 effective, but this didn't account for rider changing position and changing CG so 52 deg effective should be achievable
-
-% At any time the acceleration must be less than sqrt(longacc^2 + latacc^2) - this is  the friction elipse
+brakelonglim = abs(min(RaceData(:,2)))*9.81; %Acceleration and braking limit (m/s^2)
+acclonglim = max(RaceData(:,2))*9.81;
+latlim = max(abs(RaceData(:,1)))*9.81;
 
 %% Calculate maximum possible Speed at all apexes
 apex_velocity = zeros(length(apex_radius),1);
