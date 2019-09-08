@@ -16,7 +16,7 @@ addpath('./Initialization')
 run Init_FLUIDS;
 
 %% Run Model
-sim('BuckeyeCurrent_Simulation');
+sim('SIMBAlink-CL');
 
 %% Process Results and Plotting
 
